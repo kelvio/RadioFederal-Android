@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Rádio Federal</string>
+    <string name="action_settings">Configurações</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="site_background_color">#4D4D4D</string>
+    <string name="title_activity_on_live">OnLiveActivity</string>
+    <string name="title_activity_programming_guide">Programação</string>
+    <string name="title_activity_pod_cast">Podcasts</string>
+    <string name="title_activity_programming_of_day_viewer">Programação</string>
+    <string name="title_activity_posts">PostsActivity</string>
+    <string name="title_activity_player">PlayerActivity</string>
+    
+    <string name="slogan">Radio Federal - Do jeito que voce curte</string>
+
+</resources>
