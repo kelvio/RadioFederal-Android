@@ -5,15 +5,18 @@ import java.io.IOException;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
+import android.widget.Button;
 
 public class MediaPlayerFacade {
 
 	private static MediaPlayer mp = new MediaPlayer();
 		
+	private static String dataSource;
+	
 	
 	
 	public static void prepareAsync(String dataSource) {
-		
+		MediaPlayerFacade.dataSource = dataSource;
 		if (mp == null) {
 			mp = new MediaPlayer();
 			mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -93,4 +96,15 @@ public class MediaPlayerFacade {
 		
 		mp = null;
 	}
+	
+	public static boolean isPlaying() {
+		return mp.isPlaying();
+	}
+	
+	public static String getDataSource() {
+		return dataSource;
+	}
+
+
+	
 }

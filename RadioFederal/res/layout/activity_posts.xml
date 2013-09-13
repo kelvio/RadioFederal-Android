@@ -9,7 +9,9 @@
         android:id="@+id/postsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/postsBotaoAtualizar"
         android:layout_centerHorizontal="true" >
+
     </ListView>
 
     <Button
@@ -17,6 +19,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:drawableLeft="@drawable/sync_icon"
         android:text="Atualizar" />
+    
+    
+    <ProgressBar
+        android:id="@+id/progressBarListaProgramas"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/postsResultStatusViewListaProgramas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/progressBarListaProgramas"
+        android:layout_centerHorizontal="true"
+        android:text="STATUS" />
 
 </RelativeLayout>

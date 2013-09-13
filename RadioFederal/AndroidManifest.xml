@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -21,8 +21,8 @@
         <activity
             android:name="br.com.radiofederal.app.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="br.com.radiofederal.app.SplashScreenActivity"
@@ -61,6 +61,10 @@
         <activity
             android:name="br.com.radiofederal.app.PlayerActivity"
             android:label="@string/title_activity_player" >
+        </activity>
+        <activity
+            android:name="br.com.radiofederal.app.CategoryPostsActivity"
+            android:label="@string/title_activity_category_posts" >
         </activity>
     </application>
 

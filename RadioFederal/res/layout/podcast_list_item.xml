@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="5dp" >
+
+    <TextView
+        android:id="@+id/nomePodcastListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="NOME"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+     <TextView
+         android:id="@+id/tamanhoPodcast"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/nomePodcastListItem"
+         android:layout_below="@+id/nomePodcastListItem"
+         android:text="TAMANHO"
+         android:textAppearance="?android:attr/textAppearanceSmall"
+         android:textStyle="bold" />
+
+     <TextView
+         android:id="@+id/dataPodcast"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/tamanhoPodcast"
+         android:layout_below="@+id/tamanhoPodcast"
+         android:text="DATA"
+         android:textAppearance="?android:attr/textAppearanceSmall"
+         android:textStyle="bold" />
+
+     <Button
+         android:id="@+id/ouvirPodcastButton"
+         style="?android:attr/buttonStyleSmall"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBottom="@+id/dataPodcast"
+         android:layout_alignParentRight="true"
+         android:layout_alignTop="@+id/tamanhoPodcast"
+         android:layout_marginRight="18dp"
+         android:text="Ouvir" />
+
+</RelativeLayout>

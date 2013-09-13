@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    tools:context=".CategoryPostsActivity" >
+
+    <ListView
+        android:id="@+id/listaPostsCategoriaActivityCategoryPosts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mostrarMaisPostsButtonActivityCategoryPosts"
+        android:layout_centerHorizontal="true" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/mostrarMaisPostsButtonActivityCategoryPosts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="Mostrar mais posts..." />
+
+    <ProgressBar
+        android:id="@+id/progressBarActivityCategoryPosts"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/statusActivityCategoryPosts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/progressBarActivityCategoryPosts"
+        android:layout_centerHorizontal="true"
+        android:text="..." />
+
+</RelativeLayout>

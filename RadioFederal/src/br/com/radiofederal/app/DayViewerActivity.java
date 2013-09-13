@@ -26,11 +26,11 @@ public class DayViewerActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_programming_of_day_viewer);
 		
-		ProgressBar progressBar = (ProgressBar) this.findViewById(R.id.programmingGuideProgressBar);
-		progressBar.setVisibility(View.VISIBLE);
+		//ProgressBar progressBar = (ProgressBar) this.findViewById(R.id.programmingGuideProgressBar);
+		//progressBar.setVisibility(View.VISIBLE);
 		
 		WebView wv = (WebView) this.findViewById(R.id.programmingOfDayViewerWebView);
-		wv.setVisibility(View.INVISIBLE);
+		//wv.setVisibility(View.INVISIBLE);
 		WebSettings settings = wv.getSettings();
 		settings.setDefaultTextEncodingName("utf-8");
 		
@@ -50,27 +50,35 @@ public class DayViewerActivity extends Activity {
 	 * 
 	 */
 	private void buscarProgramacao() {
+		WebView wv = (WebView) findViewById(R.id.programmingOfDayViewerWebView);
 		switch (this.getIntent().getExtras().getInt("index")) {
 		case 0:	
-			this.buscarAsync("domingo", "http://www.radiofederal.com.br/wordpress/programacao-domingo/");			
+			wv.loadUrl("file:///android_asset/programacao_domingo.html");
+			//this.buscarAsync("domingo", "http://www.radiofederal.com.br/wordpress/programacao-domingo/");			
 			break;
 		case 1:
-			this.buscarAsync("segunda-feira", "http://www.radiofederal.com.br/wordpress/programacao-segunda-feira/");
+			wv.loadUrl("file:///android_asset/programacao_segunda.html");
+			//this.buscarAsync("segunda-feira", "http://www.radiofederal.com.br/wordpress/programacao-segunda-feira/");
 			break;
 		case 2:			
-			this.buscarAsync("terça-feira", "http://www.radiofederal.com.br/wordpress/programacao-terca-feira-2/");
+			wv.loadUrl("file:///android_asset/programacao_terca.html");
+			//this.buscarAsync("terça-feira", "http://www.radiofederal.com.br/wordpress/programacao-terca-feira-2/");
 			break;
 		case 3:			
-			this.buscarAsync("quarta-feira", "http://www.radiofederal.com.br/wordpress/programacao-quarta-feira/");
+			wv.loadUrl("file:///android_asset/programacao_quarta.html");
+			//this.buscarAsync("quarta-feira", "http://www.radiofederal.com.br/wordpress/programacao-quarta-feira/");
 			break;
 		case 4:			
-			this.buscarAsync("quinta-feira", "http://www.radiofederal.com.br/wordpress/programacao-terca-feira/");
+			wv.loadUrl("file:///android_asset/programacao_quinta.html");
+			//this.buscarAsync("quinta-feira", "http://www.radiofederal.com.br/wordpress/programacao-terca-feira/");
 			break;
 		case 5:			
-			this.buscarAsync("sexta-feira", "http://www.radiofederal.com.br/wordpress/programacao-sexta-feira/");
+			wv.loadUrl("file:///android_asset/programacao_sexta.html");
+			//this.buscarAsync("sexta-feira", "http://www.radiofederal.com.br/wordpress/programacao-sexta-feira/");
 			break;
 		case 6:
-			this.buscarAsync("sábado", "http://www.radiofederal.com.br/wordpress/programacao-sabado/");
+			wv.loadUrl("file:///android_asset/programacao_sabado.html");
+			//this.buscarAsync("sábado", "http://www.radiofederal.com.br/wordpress/programacao-sabado/");
 			break;					
 		default:
 			finish();

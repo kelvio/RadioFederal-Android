@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -44,7 +45,7 @@ public class OnLiveActivity extends Activity {
 				try {
 					try {
 						Document d = Jsoup.parse(new URL("http://radiofederal.com.br/topoplayer/textoplayer.php"), 10000);
-						final String text = d.select("marquee").first().html();
+						final String text = StringEscapeUtils.unescapeHtml4(d.select("marquee").first().html());
 						runOnUiThread(new Runnable() {
 							
 							@Override

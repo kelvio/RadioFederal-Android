@@ -5,8 +5,13 @@
     
     tools:context=".PodCastActivity" xmlns:android1="http://schemas.android.com/apk/res/android">
 
-    <ListView android1:id="@+id/podcastListView"        
-        android1:layout_width="match_parent" android1:layout_height="match_parent">        
+    <ListView
+        android1:id="@+id/podcastListView"
+        android1:layout_width="match_parent"
+        android1:layout_height="match_parent"
+        android1:layout_above="@+id/podcastBotaoAtualizar"
+        android:textSize="12sp" >
+        
     </ListView>
     
     
@@ -15,6 +20,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:drawableLeft="@drawable/sync_icon"
         android:text="Atualizar" />
+
+    <ProgressBar
+        android1:id="@+id/progressBarListaPodcasts"
+        style="?android:attr/progressBarStyleLarge"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_centerHorizontal="true"
+        android1:layout_centerVertical="true" />
+
+    <TextView
+        android1:id="@+id/podcastResultStatusView"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignTop="@+id/progressBarListaPodcasts"
+        android1:layout_centerHorizontal="true"
+        android1:text="STATUS" />
     
 </RelativeLayout>

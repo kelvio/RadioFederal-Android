@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/tituloPostPostsListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="TÍTULO DO POST" />
+
+    <TextView
+        android:id="@+id/dataPostPostsListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tituloPostPostsListItem"
+        android:text="DATA DO POST" />
+
+    <TextView
+        android:id="@+id/postadoPorPostsListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dataPostPostsListItem"
+        android:text="Postado por:" />
+
+    <TextView
+        android:id="@+id/comentariosPostsListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/postadoPorPostsListItem"
+        android:text="Comentários:" />
+
+    <TextView
+        android:id="@+id/numeroComentariosPostsListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/comentariosPostsListItem"
+        android:layout_alignBottom="@+id/comentariosPostsListItem"
+        android:layout_toRightOf="@+id/dataPostPostsListItem"
+        android:text="Nº COMENTÁRIOS" />
+
+    <TextView
+        android:id="@+id/categoriaPostsListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/comentariosPostsListItem"
+        android:text="Categoria:" />
+
+    <TextView
+        android:id="@+id/nomeCategoriaPostsListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/categoriaPostsListItem"
+        android:layout_alignBottom="@+id/categoriaPostsListItem"
+        android:layout_toRightOf="@+id/postadoPorPostsListItem"
+        android:text="NOME DA CATEGORIA" />
+
+    <TextView
+        android:id="@+id/textoResumoPostsListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/nomeCategoriaPostsListItem"
+        android:layout_marginTop="22dp"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:text="RESUMO" />
+
+    <TextView
+        android:id="@+id/nomeAutorPostsListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/comentariosPostsListItem"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/comentariosPostsListItem"
+        android:text="AUTOR" />
+
+</RelativeLayout>

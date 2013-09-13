@@ -12,7 +12,7 @@
     <string name="title_activity_programming_of_day_viewer">Programação</string>
     <string name="title_activity_posts">PostsActivity</string>
     <string name="title_activity_player">PlayerActivity</string>
-    
     <string name="slogan">Radio Federal - Do jeito que voce curte</string>
+    <string name="title_activity_category_posts">Posts</string>
 
 </resources>
