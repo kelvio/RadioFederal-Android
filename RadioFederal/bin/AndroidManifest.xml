@@ -66,6 +66,10 @@
             android:name="br.com.radiofederal.app.CategoryPostsActivity"
             android:label="@string/title_activity_category_posts" >
         </activity>
+        <activity
+            android:name="br.com.radiofederal.app.PostViewerActivity"
+            android:label="@string/title_activity_post_viewer" >
+        </activity>
     </application>
 
 </manifest>

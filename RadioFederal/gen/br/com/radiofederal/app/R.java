@@ -26,45 +26,47 @@ public final class R {
         public static final int sync_icon=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080026;
-        public static final int categoriaPostsListItem=0x7f080020;
-        public static final int comentariosPostsListItem=0x7f08001e;
-        public static final int dataPodcast=0x7f080019;
-        public static final int dataPostPostsListItem=0x7f08001c;
+        public static final int action_settings=0x7f080028;
+        public static final int categoriaPostsListItem=0x7f080022;
+        public static final int comentariosPostsListItem=0x7f080020;
+        public static final int dataPodcast=0x7f08001b;
+        public static final int dataPostPostsListItem=0x7f08001e;
         public static final int hScrollView=0x7f080006;
         public static final int imageView1=0x7f080009;
         public static final int include1=0x7f080007;
         public static final int listaPostsCategoriaActivityCategoryPosts=0x7f080001;
         public static final int mostrarMaisPostsButtonActivityCategoryPosts=0x7f080002;
-        public static final int nomeAutorPostsListItem=0x7f080023;
-        public static final int nomeCanalListItem=0x7f080015;
-        public static final int nomeCategoriaPostsListItem=0x7f080021;
-        public static final int nomePodcastListItem=0x7f080017;
-        public static final int numeroComentariosPostsListItem=0x7f08001f;
+        public static final int nomeAutorPostsListItem=0x7f080025;
+        public static final int nomeCanalListItem=0x7f080017;
+        public static final int nomeCategoriaPostsListItem=0x7f080023;
+        public static final int nomePodcastListItem=0x7f080019;
+        public static final int numeroComentariosPostsListItem=0x7f080021;
         public static final int onLiveListenButton=0x7f080008;
-        public static final int ouvirPodcastButton=0x7f08001a;
-        public static final int playerLogo=0x7f080025;
-        public static final int playerReproduzindo=0x7f080024;
+        public static final int ouvirPodcastButton=0x7f08001c;
+        public static final int playerLogo=0x7f080027;
+        public static final int playerReproduzindo=0x7f080026;
         public static final int podcastBotaoAtualizar=0x7f08000b;
         public static final int podcastListView=0x7f08000a;
         public static final int podcastResultStatusView=0x7f08000d;
-        public static final int postadoPorPostsListItem=0x7f08001d;
-        public static final int postsBotaoAtualizar=0x7f08000f;
-        public static final int postsListView=0x7f08000e;
-        public static final int postsResultStatusViewListaProgramas=0x7f080011;
-        public static final int programmingGuideListView=0x7f080012;
-        public static final int programmingGuideProgressBar=0x7f080013;
-        public static final int programmingOfDayViewerWebView=0x7f080014;
+        public static final int postadoPorPostsListItem=0x7f08001f;
+        public static final int postsBotaoAtualizar=0x7f080011;
+        public static final int postsListView=0x7f080010;
+        public static final int postsResultStatusViewListaProgramas=0x7f080013;
+        public static final int programmingGuideListView=0x7f080014;
+        public static final int programmingGuideProgressBar=0x7f080015;
+        public static final int programmingOfDayViewerWebView=0x7f080016;
         public static final int progressBarActivityCategoryPosts=0x7f080003;
+        public static final int progressBarActivityPostViewer=0x7f08000e;
         public static final int progressBarListaPodcasts=0x7f08000c;
-        public static final int progressBarListaProgramas=0x7f080010;
-        public static final int quantidadePostsCanalBlogCanal=0x7f080016;
+        public static final int progressBarListaProgramas=0x7f080012;
+        public static final int quantidadePostsCanalBlogCanal=0x7f080018;
         public static final int statusActivityCategoryPosts=0x7f080004;
         public static final int tabhost=0x7f080005;
-        public static final int tamanhoPodcast=0x7f080018;
-        public static final int textoResumoPostsListItem=0x7f080022;
-        public static final int tituloPostPostsListItem=0x7f08001b;
+        public static final int tamanhoPodcast=0x7f08001a;
+        public static final int textoResumoPostsListItem=0x7f080024;
+        public static final int tituloPostPostsListItem=0x7f08001d;
         public static final int webView1=0x7f080000;
+        public static final int webViewActivityPostViewer=0x7f08000f;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
@@ -73,14 +75,15 @@ public final class R {
         public static final int activity_on_live=0x7f030003;
         public static final int activity_player=0x7f030004;
         public static final int activity_pod_cast=0x7f030005;
-        public static final int activity_posts=0x7f030006;
-        public static final int activity_programming_guide=0x7f030007;
-        public static final int activity_programming_of_day_viewer=0x7f030008;
-        public static final int activity_splash_screen=0x7f030009;
-        public static final int blog_canais_list_item=0x7f03000a;
-        public static final int podcast_list_item=0x7f03000b;
-        public static final int posts_list_item=0x7f03000c;
-        public static final int visor_player=0x7f03000d;
+        public static final int activity_post_viewer=0x7f030006;
+        public static final int activity_posts=0x7f030007;
+        public static final int activity_programming_guide=0x7f030008;
+        public static final int activity_programming_of_day_viewer=0x7f030009;
+        public static final int activity_splash_screen=0x7f03000a;
+        public static final int blog_canais_list_item=0x7f03000b;
+        public static final int podcast_list_item=0x7f03000c;
+        public static final int posts_list_item=0x7f03000d;
+        public static final int visor_player=0x7f03000e;
     }
     public static final class menu {
         public static final int about=0x7f070000;
@@ -89,9 +92,10 @@ public final class R {
         public static final int on_live=0x7f070003;
         public static final int player=0x7f070004;
         public static final int pod_cast=0x7f070005;
-        public static final int posts=0x7f070006;
-        public static final int programming_guide=0x7f070007;
-        public static final int programming_of_day_viewer=0x7f070008;
+        public static final int post_viewer=0x7f070006;
+        public static final int posts=0x7f070007;
+        public static final int programming_guide=0x7f070008;
+        public static final int programming_of_day_viewer=0x7f070009;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -104,6 +108,7 @@ public final class R {
         public static final int title_activity_on_live=0x7f050005;
         public static final int title_activity_player=0x7f05000a;
         public static final int title_activity_pod_cast=0x7f050007;
+        public static final int title_activity_post_viewer=0x7f05000d;
         public static final int title_activity_posts=0x7f050009;
         public static final int title_activity_programming_guide=0x7f050006;
         public static final int title_activity_programming_of_day_viewer=0x7f050008;

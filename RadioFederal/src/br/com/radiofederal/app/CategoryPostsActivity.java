@@ -53,50 +53,7 @@ public class CategoryPostsActivity extends Activity {
 	}
 	
 	
-	class ResumoPostItemAdapter extends ArrayAdapter<ResumoPost> {
-
-		private Activity myContext;
-
-		private ResumoPost[] datas;
-
-		public ResumoPostItemAdapter(Context context, int textViewResourceId,
-				ResumoPost[] objects) {
-			super(context, textViewResourceId, objects);
-
-			myContext = (Activity) context;
-			datas = objects;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			LayoutInflater inflater = myContext.getLayoutInflater();
-			View rowView = inflater.inflate(R.layout.posts_list_item, null);
-			
-			ResumoPost resumo = this.datas[position];
-
-			TextView tituloPost = (TextView) rowView.findViewById(R.id.tituloPostPostsListItem);
-			
-			tituloPost.setText(resumo.getNome());
-			
-			TextView dataPost = (TextView) rowView.findViewById(R.id.dataPostPostsListItem);
-			dataPost.setText(resumo.getData());
-			
-			TextView autorPost = (TextView) rowView.findViewById(R.id.nomeAutorPostsListItem);
-			autorPost.setText(resumo.getNomeAutor());
-			
-			TextView numeroComentariosPost = (TextView) rowView.findViewById(R.id.numeroComentariosPostsListItem);
-			numeroComentariosPost.setText(resumo.getNumeroComentarios());
-
-			TextView nomeCategoriaPost = (TextView) rowView.findViewById(R.id.nomeCategoriaPostsListItem);
-			nomeCategoriaPost.setText(resumo.getNomeCategoria());
-			
-			TextView resumoPost = (TextView) rowView.findViewById(R.id.textoResumoPostsListItem);
-			resumoPost.setText(resumo.getResumo());
-			
-			return rowView;
-		}		
-
-	}
+	
 	
 	private void prepareList() {
 
@@ -149,6 +106,13 @@ public class CategoryPostsActivity extends Activity {
 						}
 						
 						try {
+							r.setUrlPost(StringEscapeUtils.unescapeHtml4(post.child(0).child(0).child(1).child(0).child(0).attr("href")));
+							//r.setData(post.child(0).child(0).child(0).child(0).html());
+						} catch (Exception e) {
+							Log.e(TAG, "Não foi possível obter a url do post." + e.getMessage());							
+						}
+						
+						try {
 							r.setNomeAutor(StringEscapeUtils.unescapeHtml4(post.child(0).child(0).child(1).child(1).child(0).html()));
 							//r.setData(post.child(0).child(0).child(0).child(0).html());
 						} catch (Exception e) {
@@ -184,46 +148,6 @@ public class CategoryPostsActivity extends Activity {
 						l.add(r);
 					}
 					
-					/*Elements canais = d.select(".cat-item");
-
-					List<CanalBlog> l = new ArrayList<CanalBlog>();
-
-					for (Element canal : canais) {
-
-						CanalBlog c = new CanalBlog();
-						try {
-
-							c.setNome(StringEscapeUtils.unescapeHtml4(canal
-									.child(0).html()));
-
-							// p.setNome(podcast.child(1).html());
-						} catch (Exception e) {
-							Log.e(TAG, "Falha ao buscar nome do canal do blog:"
-									+ e.getMessage());
-						}
-
-						try {
-							c.setUrl(canal.child(0).attr("href"));
-						} catch (Exception e) {
-							Log.e(TAG, "Falha ao buscar url do canal do blog:"
-									+ e.getMessage());
-						}
-
-						try {
-							canal.child(0).remove();
-							c.setNumeroPosts(StringEscapeUtils
-									.unescapeHtml4(canal.html().replace("(", "").replace(")", "").trim()));
-
-						} catch (Exception e) {
-							Log.e(TAG,
-									"Falha ao buscar número de posts do canal:"
-											+ e.getMessage());
-							c.setNumeroPosts("0");
-						}
-
-						l.add(c); 
-
-					}*/
 
 					return l;
 
@@ -269,15 +193,13 @@ public class CategoryPostsActivity extends Activity {
 							public void onItemClick(AdapterView<?> arg0,
 									View view, int position, long id) {
 
+								ResumoPostItemAdapter adapter = (ResumoPostItemAdapter) listView.getAdapter();
+								ResumoPost resumo = adapter.getResumo(position);
 								
-								//CanalItemAdapter adapter = (CanalItemAdapter) listView.getAdapter();
-								//CanalBlog canal = adapter.getCanalBlog(position);
-								
-								//Intent i = new Intent();
-								//i.setClass(PostsActivity.this,
-								//		CategoryPostsActivity.class);
-								//i.putExtra("url", canal.getUrl());
-								//startActivity(i);
+								Intent i = new Intent();
+								i.setClass(CategoryPostsActivity.this, PostViewerActivity.class);
+								i.putExtra("url", resumo.getUrlPost());
+								startActivity(i);
 
 							}
 						});
@@ -302,5 +224,53 @@ public class CategoryPostsActivity extends Activity {
 
 	}
 
+	class ResumoPostItemAdapter extends ArrayAdapter<ResumoPost> {
+
+		private Activity myContext;
+
+		private ResumoPost[] datas;
+
+		public ResumoPostItemAdapter(Context context, int textViewResourceId,
+				ResumoPost[] objects) {
+			super(context, textViewResourceId, objects);
+
+			myContext = (Activity) context;
+			datas = objects;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			LayoutInflater inflater = myContext.getLayoutInflater();
+			View rowView = inflater.inflate(R.layout.posts_list_item, null);
+			
+			ResumoPost resumo = this.datas[position];
+
+			TextView tituloPost = (TextView) rowView.findViewById(R.id.tituloPostPostsListItem);
+			
+			tituloPost.setText(resumo.getNome());
+			
+			TextView dataPost = (TextView) rowView.findViewById(R.id.dataPostPostsListItem);
+			dataPost.setText(resumo.getData());
+			
+			TextView autorPost = (TextView) rowView.findViewById(R.id.nomeAutorPostsListItem);
+			autorPost.setText(resumo.getNomeAutor());
+			
+			TextView numeroComentariosPost = (TextView) rowView.findViewById(R.id.numeroComentariosPostsListItem);
+			numeroComentariosPost.setText(resumo.getNumeroComentarios());
+
+			TextView nomeCategoriaPost = (TextView) rowView.findViewById(R.id.nomeCategoriaPostsListItem);
+			nomeCategoriaPost.setText(resumo.getNomeCategoria());
+			
+			TextView resumoPost = (TextView) rowView.findViewById(R.id.textoResumoPostsListItem);
+			resumoPost.setText(resumo.getResumo());
+			
+			return rowView;
+		}	
+		
+		public ResumoPost getResumo(int position) {
+			return this.datas[position];
+		}
+
+	}
 
 }

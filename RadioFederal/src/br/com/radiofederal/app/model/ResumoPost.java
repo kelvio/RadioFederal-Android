@@ -8,6 +8,7 @@ public class ResumoPost {
 	private String nomeCategoria = "";
 	private String resumo = "";
 	private String nomeAutor = "";
+	private String urlPost = "";
 	
 	public String getNome() {
 		return nome;
@@ -55,6 +56,14 @@ public class ResumoPost {
 
 	public void setNomeAutor(String nomeAutor) {
 		this.nomeAutor = nomeAutor;
+	}
+
+	public String getUrlPost() {
+		return urlPost;
+	}
+
+	public void setUrlPost(String urlPost) {
+		this.urlPost = urlPost;
 	}
 
 	
