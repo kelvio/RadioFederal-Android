@@ -1,25 +1,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"    
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    
-    tools:context=".PodCastActivity" xmlns:android1="http://schemas.android.com/apk/res/android">
+    android:background="#4D4D4D"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="10dp"
+    tools:context=".PodCastActivity" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/visor_player" />
 
     <ListView
         android1:id="@+id/podcastListView"
         android1:layout_width="match_parent"
         android1:layout_height="match_parent"
         android1:layout_above="@+id/podcastBotaoAtualizar"
-        android:textSize="12sp" >
-        
+        android1:layout_below="@+id/include1"
+        android1:layout_marginTop="5dp"
+        android:textSize="12sp"
+        android1:background="#DFDFDF" >
     </ListView>
-    
-    
+
     <Button
         android:id="@+id/podcastBotaoAtualizar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android1:layout_alignRight="@+id/podcastResultStatusView"
         android:drawableLeft="@drawable/sync_icon"
         android:text="Atualizar" />
 
@@ -37,6 +49,18 @@
         android1:layout_height="wrap_content"
         android1:layout_alignTop="@+id/progressBarListaPodcasts"
         android1:layout_centerHorizontal="true"
+        android1:background="#FFFFFF"
         android1:text="STATUS" />
-    
+
+
+    <ToggleButton
+        android1:id="@+id/buttonOuvitActivityPodcastActivity"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"                        
+        android1:layout_alignParentBottom="true"
+        android1:layout_alignRight="@+id/podcastListView"
+        android1:layout_toRightOf="@+id/progressBarListaPodcasts"        
+        android1:textOff="OUVIR"
+        android1:textOn="PARAR" />
+
 </RelativeLayout>

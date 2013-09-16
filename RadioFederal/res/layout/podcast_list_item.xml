@@ -35,16 +35,6 @@
          android:text="DATA"
          android:textAppearance="?android:attr/textAppearanceSmall"
          android:textStyle="bold" />
-
-     <Button
-         android:id="@+id/ouvirPodcastButton"
-         style="?android:attr/buttonStyleSmall"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignBottom="@+id/dataPodcast"
-         android:layout_alignParentRight="true"
-         android:layout_alignTop="@+id/tamanhoPodcast"
-         android:layout_marginRight="18dp"
-         android:text="Ouvir" />
+     
 
 </RelativeLayout>

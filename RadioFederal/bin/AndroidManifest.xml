@@ -21,13 +21,13 @@
         <activity
             android:name="br.com.radiofederal.app.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name="br.com.radiofederal.app.SplashScreenActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

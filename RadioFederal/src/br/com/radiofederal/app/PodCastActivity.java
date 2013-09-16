@@ -12,15 +12,15 @@ import org.jsoup.select.Elements;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -28,7 +28,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import br.com.radiofederal.app.model.CanalBlog;
+import android.widget.ToggleButton;
 import br.com.radiofederal.app.model.Podcast;
 import br.com.radiofederal.app.util.ConnectionUtil;
 import br.com.radiofederal.app.util.MediaPlayerFacade;
@@ -38,10 +38,84 @@ public class PodCastActivity extends Activity {
 
 	private static final String TAG = "PodCastActivity";
 
+	private Podcast selectedItem;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pod_cast);
+
+		final Button buttonOuvir = (Button) findViewById(R.id.buttonOuvitActivityPodcastActivity);
+		buttonOuvir.setEnabled(false);
+		buttonOuvir.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+
+				// Is the toggle on?
+				boolean on = ((ToggleButton) view).isChecked();
+
+				if (on) {
+										
+					if (MediaPlayerFacade.isPlaying()) {
+						MediaPlayerFacade.stop();
+						MediaPlayerFacade.dispose();
+					}
+					
+					MediaPlayerFacade.prepareAsync(selectedItem.getUrl());
+					MediaPlayerFacade.play();
+					
+				} else {
+
+					MediaPlayerFacade.stop();
+					MediaPlayerFacade.dispose();
+										
+				}
+
+				/*
+				 * if (MediaPlayerFacade.getDataSource() == null) {
+				 * MediaPlayerFacade.prepareAsync(selectedItem.getUrl());
+				 * MediaPlayerFacade.play(); buttonOuvir.setText("PARAR");
+				 * return; }
+				 * 
+				 * 
+				 * if (MediaPlayerFacade.getDataSource() ==
+				 * selectedItem.getUrl()) {
+				 * 
+				 * if (MediaPlayerFacade.isPlaying()) {
+				 * MediaPlayerFacade.pause(); buttonOuvir.setText("OUVIR");
+				 * return; } else {
+				 * 
+				 * MediaPlayerFacade.play(); buttonOuvir.setText("PARAR");
+				 * 
+				 * }
+				 * 
+				 * }
+				 * 
+				 * 
+				 * if (MediaPlayerFacade.getDataSource() != null &&
+				 * MediaPlayerFacade.getDataSource() != selectedItem.getUrl()) {
+				 * 
+				 * MediaPlayerFacade.dispose();MediaPlayerFacade.prepareAsync(
+				 * selectedItem.getUrl()); MediaPlayerFacade.play();
+				 * buttonOuvir.setText("PARAR"); return;
+				 * 
+				 * }
+				 */
+
+			}
+		});
+
+		TextView playerReproduzindo = (TextView) this
+				.findViewById(R.id.playerReproduzindo);
+		playerReproduzindo.setSelected(true);
+
+		TextView playerLogo = (TextView) this.findViewById(R.id.playerLogo);
+
+		Typeface typeface = Typeface.createFromAsset(getAssets(),
+				"fonts/LiquidCrystal-LightItalic.otf");
+		playerReproduzindo.setTypeface(typeface);
+		playerLogo.setTypeface(typeface);
 
 		((Button) this.findViewById(R.id.podcastBotaoAtualizar))
 				.setOnClickListener(new OnClickListener() {
@@ -208,7 +282,7 @@ public class PodCastActivity extends Activity {
 						// ArrayAdapter<String>(PodCastActivity.this,
 						// android.R.layout.simple_list_item_1, list);
 
-						ListView listView = (ListView) findViewById(R.id.podcastListView);
+						final ListView listView = (ListView) findViewById(R.id.podcastListView);
 						listView.setVisibility(View.VISIBLE);
 
 						listView.setOnItemClickListener(new OnItemClickListener() {
@@ -216,11 +290,8 @@ public class PodCastActivity extends Activity {
 							public void onItemClick(AdapterView<?> arg0,
 									View view, int position, long id) {
 
-								Intent i = new Intent();
-								i.setClass(PodCastActivity.this,
-										PlayerActivity.class);
-								i.putExtra("url", "");
-								startActivity(i);
+								setSelectedItem((Podcast) listView.getAdapter()
+										.getItem(position));
 
 							}
 						});
@@ -251,7 +322,6 @@ public class PodCastActivity extends Activity {
 		private Activity myContext;
 
 		private Podcast[] datas;
-				
 
 		public PodcastItemAdapter(Context context, int textViewResourceId,
 				Podcast[] objects) {
@@ -259,7 +329,7 @@ public class PodCastActivity extends Activity {
 
 			myContext = (Activity) context;
 			datas = objects;
-			
+
 		}
 
 		@Override
@@ -283,69 +353,97 @@ public class PodCastActivity extends Activity {
 
 			tamanhoPodcast.setText(datas[position].getDuracao());
 
-			final Button b = (Button) rowView
-					.findViewById(R.id.ouvirPodcastButton);
-
-			
-			
-			if (MediaPlayerFacade.getDataSource() != null
-					&& MediaPlayerFacade.getDataSource().equals(
-							datas[position].getUrl())) {
-
-				if (MediaPlayerFacade.isPlaying()) {
-					b.setText("Parar");
-				}
-
-			} else {
-				b.setText("Ouvir");
-			}
-
-			b.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-
-					for (int i = 0; i < datas.length; i++) {
-						Button button = (Button) PodcastItemAdapter.this.getView(position, convertView, parent).findViewById(R.id.ouvirPodcastButton);
-						button.setText("Ouvir");
-					}
-					
-					if (ConnectionUtil.checkConnection(PodCastActivity.this,
-							true, null)) {
-						
-						if (MediaPlayerFacade.isPlaying()) {
-
-							MediaPlayerFacade.pause();
-							b.setText("Ouvir");
-
-						} else {
-
-							if (MediaPlayerFacade.getDataSource() == null
-									|| !MediaPlayerFacade.getDataSource()
-											.equals(datas[position].getUrl())) {
-								
-								MediaPlayerFacade.dispose();
-								MediaPlayerFacade.prepareAsync(datas[position]
-										.getUrl());
-								MediaPlayerFacade.play();
-							} else {
-								MediaPlayerFacade.resume();
-							}
-
-							
-							
-							b.setText("Parar");
-							
-
-						}
-
-					}
-
-				}
-			});
+			/*
+			 * final Button b = (Button) rowView
+			 * .findViewById(R.id.ouvirPodcastButton);
+			 * 
+			 * 
+			 * 
+			 * if (MediaPlayerFacade.getDataSource() != null &&
+			 * MediaPlayerFacade.getDataSource().equals(
+			 * datas[position].getUrl())) {
+			 * 
+			 * if (MediaPlayerFacade.isPlaying()) { b.setText("Parar"); }
+			 * 
+			 * } else { b.setText("Ouvir"); }
+			 * 
+			 * b.setOnClickListener(new OnClickListener() {
+			 * 
+			 * @Override public void onClick(View v) {
+			 * 
+			 * for (int i = 0; i < datas.length; i++) { Button button = (Button)
+			 * PodcastItemAdapter.this.getView(position, convertView,
+			 * parent).findViewById(R.id.ouvirPodcastButton);
+			 * button.setText("Ouvir"); }
+			 * 
+			 * if (ConnectionUtil.checkConnection(PodCastActivity.this, true,
+			 * null)) {
+			 * 
+			 * if (MediaPlayerFacade.isPlaying()) {
+			 * 
+			 * MediaPlayerFacade.pause(); b.setText("Ouvir");
+			 * 
+			 * } else {
+			 * 
+			 * if (MediaPlayerFacade.getDataSource() == null ||
+			 * !MediaPlayerFacade.getDataSource()
+			 * .equals(datas[position].getUrl())) {
+			 * 
+			 * MediaPlayerFacade.dispose();
+			 * MediaPlayerFacade.prepareAsync(datas[position] .getUrl());
+			 * MediaPlayerFacade.play(); } else { MediaPlayerFacade.resume(); }
+			 * 
+			 * 
+			 * 
+			 * b.setText("Parar");
+			 * 
+			 * 
+			 * }
+			 * 
+			 * }
+			 * 
+			 * } });
+			 */
 
 			return rowView;
 		}
+
+	}
+
+	public Podcast getSelectedItem() {
+		return selectedItem;
+	}
+
+	public void setSelectedItem(final Podcast selectedItem) {
+		this.selectedItem = selectedItem;
+
+		runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				Button buttonOuvir = (Button) findViewById(R.id.buttonOuvitActivityPodcastActivity);
+				if (selectedItem != null) {
+
+					TextView playerReproduzindo = (TextView) findViewById(R.id.playerReproduzindo);
+					playerReproduzindo.setText(selectedItem.getNome() + " - "
+							+ selectedItem.getData() + " - "
+							+ selectedItem.getDuracao());
+					buttonOuvir.setEnabled(true);
+					
+					if (MediaPlayerFacade.isPlaying()) {
+						MediaPlayerFacade.stop();
+						MediaPlayerFacade.dispose();
+						
+						((ToggleButton) buttonOuvir).setChecked(false);
+					}
+					
+					
+				} else {
+					buttonOuvir.setEnabled(false);
+				}
+			}
+		});
 
 	}
 

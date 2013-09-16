@@ -12,16 +12,17 @@
         android:id="@+id/include1"
         layout="@layout/visor_player" />
 
-    <Button
-        android:id="@+id/onLiveListenButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_alignRight="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginTop="16dp"
-        android:text="Ouvir" />
+    
 
+    <ToggleButton
+        android:id="@+id/onLiveListenButton"
+        android:layout_width="match_parent"        
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"                                        
+        android:textOff="OUVIR"
+        android:textOn="PARAR" />
+    
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"

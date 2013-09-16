@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+//		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		ConnectionUtil.checkConnection(this, true, null);
 
@@ -38,15 +38,26 @@ public class MainActivity extends Activity {
 			@Override
 			public void run() {
 
-				h.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-
 				h.postDelayed(new Runnable() {
-
+					
 					@Override
 					public void run() {
-						h.fullScroll(HorizontalScrollView.FOCUS_LEFT);
+						h.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+						
+						h.postDelayed(new Runnable() {
+
+							@Override
+							public void run() {
+								h.fullScroll(HorizontalScrollView.FOCUS_LEFT);
+							}
+						}, 1500);
+						
 					}
-				}, 1500);
+				}, 1000);
+				
+				
+
+				
 			}
 		});
 

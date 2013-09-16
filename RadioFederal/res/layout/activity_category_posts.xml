@@ -19,6 +19,7 @@
 
     <Button
         android:id="@+id/mostrarMaisPostsButtonActivityCategoryPosts"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -36,10 +37,12 @@
 
     <TextView
         android:id="@+id/statusActivityCategoryPosts"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/progressBarActivityCategoryPosts"
         android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"        
         android:text="..." />
 
+    
 </RelativeLayout>

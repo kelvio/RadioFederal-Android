@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 import br.com.radiofederal.app.util.ConnectionUtil;
 import br.com.radiofederal.app.util.MediaPlayerFacade;
 import br.com.radiofederal.app.util.QuitDialogUtil;
@@ -96,30 +97,27 @@ public class OnLiveActivity extends Activity {
 				if (ConnectionUtil.checkConnection(OnLiveActivity.this, true,
 						null)) {
 
-					if (playing) {
+					// Is the toggle on?
+					boolean on = ((ToggleButton) v).isChecked();
 
-						MediaPlayerFacade.pause();
-						listen.setText("Ouvir");
-
-						playing = false;
-
+					if (on) {
+						
+						if (MediaPlayerFacade.isPlaying()) {
+							MediaPlayerFacade.stop();
+							MediaPlayerFacade.dispose();
+						}
+						
+						MediaPlayerFacade.prepareAsync("http://streaming19.brlogic.com:8152/live");
+						MediaPlayerFacade.play();
+						
 					} else {
 
-						if (!prepareCalled) {
-							MediaPlayerFacade
-									.prepareAsync("http://streaming19.brlogic.com:8152/live"); // http://www.robtowns.com/music/blind_willie.mp3
-							prepareCalled = true;
-							MediaPlayerFacade.play();
-						} else {
-							MediaPlayerFacade.resume();
-						}
-
-						listen.setText("Parar");
-
-						playing = true;
-
+						MediaPlayerFacade.stop();
+						MediaPlayerFacade.dispose();
+											
 					}
-
+										
+					
 				}
 			}
 		});

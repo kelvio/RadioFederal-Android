@@ -98,6 +98,9 @@ public class MediaPlayerFacade {
 	}
 	
 	public static boolean isPlaying() {
+		if (mp == null) {
+			return false;
+		}
 		return mp.isPlaying();
 	}
 	
